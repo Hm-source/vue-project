@@ -1,14 +1,14 @@
 <script setup>
-import axios from 'axios'
-const { data } = await axios.get('https://fakestoreapi.com/products')
-const products = data
+import { useCounterStore } from '@/stores/counter'
+const counter = useCounterStore()
+counter.getProducts()
 </script>
 
 <template>
   <div class="store-products">
     <h1>products</h1>
     <div>
-      <li v-for="(product, index) in products" :key="index">
+      <li v-for="(product, index) in counter.products" :key="index">
         <div class="product">
           <img :src="product.image" width="40px" height="40px" :alt="product.title" />
           <div>
