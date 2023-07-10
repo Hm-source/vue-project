@@ -40,7 +40,7 @@ const routes = [
 
 export const createRouter = () =>
   _createRouter({
-    history: import.meta.env.SSR
+    history: import.meta.env.SSR // SSR 이면 memory 아니면 web 으로 
       ? createMemoryHistory("/")
       : createWebHistory("/"),
     routes,
