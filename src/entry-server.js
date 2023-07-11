@@ -2,18 +2,18 @@
 import { basename } from "node:path";
 import { renderToString } from "vue/server-renderer";
 import { createApp } from "./main";
-import ProductsList from './components/ProductsList.vue';
+// import ProductsList from './components/ProductsList.vue';
 
-import { createVNode } from 'vue';
+// import { createVNode } from 'vue';
 
 
 // server.js 에서 render, renderPreloadLinks 사용하여 html, preloadLinks 를 rendering하도록 함.
 export async function render(url, manifest) {
   const { app, router } = createApp();
     // ProductList 컴포넌트를 렌더링에 포함시킴
-  const productList = createVNode(ProductsList);
-  console.log(url);
-  const productListHtml = await renderToString(productList);
+  // const productList = createVNode(ProductsList);
+  console.log('entry-server', url);
+  // const productListHtml = await renderToString(productList);
   await router.push(url);
   await router.isReady();
   const ctx = {};
@@ -22,7 +22,7 @@ export async function render(url, manifest) {
   const html = await renderToString(app, ctx);
   // console.log(html);
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
-  return [html, productListHtml, preloadLinks];
+  return [html, preloadLinks];
 }
 
 function renderPreloadLinks(modules, manifest) {
