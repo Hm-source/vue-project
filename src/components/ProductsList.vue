@@ -15,6 +15,8 @@ const products = data
           </div>
           <div class="product-info">
             <router-link :to="`/product/${product.id}`">title : {{ product.title }}</router-link>
+            <a :href="`/product/${product.id}`">title : {{ product.title }}</a>
+            <!-- a tag로 이동 시에 서버에서 html 다시 받아온다. -->
             <p>price : {{ product.price }}</p>
             <router-view></router-view>
           </div>
@@ -49,5 +51,8 @@ const products = data
   float: left;
   width: 70%;
   padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 </style>
