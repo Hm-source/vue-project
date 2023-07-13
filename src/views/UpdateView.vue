@@ -5,5 +5,8 @@ import ProductUpdate from '@/components/ProductUpdate.vue'
 <template>
   <Suspense>
     <ProductUpdate />
+    <template #fallback>
+      <div>Loading...</div>
+    </template>
   </Suspense>
 </template>

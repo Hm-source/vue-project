@@ -5,6 +5,9 @@ import ProductsList from '@/components/ProductsList.vue'
 <template>
   <Suspense>
     <ProductsList />
+    <template #fallback>
+      <div>Loading...</div>
+    </template>
   </Suspense>
 </template>
 <style>
