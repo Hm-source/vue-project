@@ -53,6 +53,8 @@ export async function createServer(
     // Vite를 미들웨어로 사용합니다.
     app.use(vite.middlewares);
   } else {
+    // nodejs 웹서버에서 압축하여 데이터 웹 브라우저에 전송, 브라우저가 압축 해제해서 사용. (compression 미들웨어 사용.)
+    //Content-Encoding: gzip 임.
     app.use((await import("compression")).default());
     app.use(
       "/",
